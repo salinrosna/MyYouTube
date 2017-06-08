@@ -1,0 +1,61 @@
+﻿<h2>Login</h2>
+<br />
+
+
+@if (ViewBag.IncorrectLogin != null)
+{
+    <div align="center"> "Incorrect Login. Please enter correct username and password" </div>
+
+}
+
+<div class="container">
+    <form id="login-form" method="post" action="/Account/Login">  @*method="post" action="/Account/Login"*@
+        <div class="form-group row">
+            <label for="inputUsername" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="Username" name="Username" placeholder="Username">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-sm-2 col-sm-10">
+                <button type="submit" id="" class="btn btn-primary" onclick="">Sign in</button>
+                @*<button type="submit" id="login-button" class="btn btn-primary" onclick="">Sign in</button>*@
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    //$("#login-button").click(function () {
+    //    alert("U click submit button");
+    //    debugger;
+    //    pull the form information and send using ajax to /Account/Login
+    //    var formData = $("#login-form").serialize();
+
+    //    $.ajax({
+    //        url: "/Account/Login",
+    //        type: "Post",
+    //        dataType: "json",
+    //        data: formData,
+    //        success: function (result) {
+
+    //            if (result.success == true) {
+    //                alert("Login successful");
+    //            }
+    //        },
+    //        error: function () {
+    //            alert("There a error");
+    //        }
+    //    })
+
+    //});
+
+</script>

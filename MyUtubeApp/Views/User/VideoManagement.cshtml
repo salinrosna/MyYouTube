@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MyUtubeApp.Models.Video>
+
+@{
+    ViewBag.Title = "VideoManagement";
+}
+
+<h2>Your Videos</h2>
+
+<table>
+    <tr>
+        <th class="col-md-2 text-left"><a>Channel Name</a></th>
+        <th class="col-md-2 text-center"><a>Title</a></th>
+        <th class="col-md-2 text-center"><a>Description</a></th>
+        <th class="col-md-2 text-center"><a>URL</a></th>
+        <th class="col-md-2 text-center"><a>Uploaded on</a></th>
+    </tr>
+    
+    @foreach(var vdo in  Model)
+    {
+        <tr id="tr-click">
+            <td class="col-md-2 text-left"><a>@vdo.Channel.ChannelName</a></td>
+            <td class="col-md-2 text-center"><a href = "@Url.Action("Video","User",new {Id = vdo.Id })">@vdo.VideoName</a></td>
+            <td class="col-md-2 text-center"><a>@vdo.VideoDescription</a></td>
+            <td class="col-md-2 text-center"><a>@vdo.VideoURL</a></td>
+            <td class="col-md-2 text-center"><a>@vdo.Createdon</a></td>
+           
+        </tr>
+    }
+</table>
+
+<script>
+    $('#click-link').click(function () {
+        var formdata = $('#click-link').serialize();
+        debugger;
+            $.ajax({
+                url: "/User/Video",
+                type: "POST",
+                dataType: "json",
+                data: formData,
+                success: function (result) {
+
+                    if (result.success == true) {
+                        alert("Login successful");
+                    }
+                },
+            })
+        })
+</script>

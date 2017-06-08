@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "AddChannel";
+}
+
+<h2>AddChannel</h2>
+<form action="/User/AddChannel" method="post">
+    <div class="form-group row">
+        <label for="inputChannel" class="col-sm-2 col-form-label">Channel Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputChannel" name="Channelname" placeholder="Channel Name">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="exampleTextarea" class="col-sm-2 col-form-label">Add Description</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="exampleTextarea" name="Channeldescription" rows="3" placeholder="Add Channel Description"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-primary" onclick="">Add</button>
+        </div>
+    </div>
+    </form>

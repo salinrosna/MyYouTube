@@ -1,0 +1,107 @@
+﻿@model MyUtubeApp.Models.DisplayvideoViewModel
+
+
+@{
+    ViewBag.Title = "Video";
+}
+
+<h2>@Model.VideosModel.VideoName</h2>
+
+<div style="width:560px;">
+    @{
+
+        string url = (Model.VideosModel.VideoURL).Trim();
+        string suburl = url.Substring(url.Length - 11);
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/@suburl" frameborder="0" allowfullscreen></iframe>
+    }
+
+    <div style="float:left;"><p>@Model.VideosModel.VideoDescription</p></div>
+    <div style="float:right;">
+        <div id="likes">
+            <label style="padding:3px;" id="likes-label">@Model.ReviewsModel.Likes</label>
+            <button type="button" id="button-likes" class="btn btn-default glyphicon glyphicon-thumbs-up" onclick=""></button>
+            <button type="button" id="button-dislikes" class="btn btn-default glyphicon glyphicon-thumbs-down" onclick=""></button>
+            <label style="padding:3px;" id="dislikes-label">@Model.ReviewsModel.Dislikes</label>
+        </div>
+    </div>
+</div><br />
+<br />
+<div class="form-group" style="width:450px;">
+    @*<input type="hidden" name="VideoID" value="@Model.Id">*@
+    <div>
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" style="max-width:100%;width:450px;" rows="3" id="comment" placeholder="Write your comment here" name="Comment"></textarea>
+    </div>
+    <div style="float:right;">
+        <button type="submit" id="Post-button" class="btn btn-primary" onclick="">Post</button>
+    </div>
+
+</div><br />
+
+<h4>Comments</h4>
+<div id="comment-list">
+    @{
+        Html.RenderAction("DisplayComment", "User", new { Id = Model.VideosModel.Id });
+    }
+</div>
+
+
+<script>
+    $("#Post-button").click(function () {
+        debugger;
+        var comment = $("#comment").val();
+        var videoId = @Model.VideosModel.Id;
+        $.ajax({
+            url: "/User/Comments",
+            type: "POST",
+            datatype: "json",
+            data: {Comment:comment,VideoId:videoId},
+            success: function (result) {
+                if (result.success) {
+                    $("#comment-list").load("/User/DisplayComment/?Id=" + videoId);
+                    debugger;
+                   
+                }
+            }
+        });
+    });
+
+    $("#button-likes").click(function () {
+        debugger;
+
+        var  likes= @Model.ReviewsModel.Likes;
+        var videoId = @Model.VideosModel.Id;
+        $.ajax({
+            url: "/User/Review",
+            type: "POST",
+            datatype: "json",
+            data: {Revw:likes,VideoId:videoId,Type:"Like"},
+            success: function (result) {
+                if (result.success==true) {
+                    debugger;
+
+                    $("#likes-label").text(result.Like);
+                    //$("#likes").load(location.href + " #likes");
+                    location.reload();
+                }
+            }
+        });
+    });
+    $("#button-dislikes").click(function () {
+        debugger;
+        var  dislikes= @Model.ReviewsModel.Dislikes;
+        var videoId = @Model.VideosModel.Id;
+        $.ajax({
+            url: "/User/Review",
+            type: "POST",
+            datatype: "json",
+            data: {Revw:dislikes,VideoId:videoId,Type:"Dislike"},
+            success: function (result) {
+                if (result.success) {
+                    $("#dislikes-label").text(result.Dislike);
+                }
+            }
+        });
+    });
+</script>

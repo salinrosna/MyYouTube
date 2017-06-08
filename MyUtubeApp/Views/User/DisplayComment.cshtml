@@ -1,0 +1,13 @@
+﻿@model IEnumerable<MyUtubeApp.Models.Comment>
+
+@foreach (var com in Model)
+{
+    <div ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  
+    </div>
+      <div style="background-color:lightgrey; width:450px;border-radius: 4px;">
+        <p id="comment-content"style="padding:8px 8px 8px 10px;">@com.Content</p>
+    </div>
+   
+}
+
+

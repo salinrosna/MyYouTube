@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f2a0929734aa43a49bed73884d29b489" Name="Diagram1">
+        <EntityTypeShape EntityType="MyUtubeModel.Channel" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyUtubeModel.Comment" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyUtubeModel.Review" Width="1.5" PointX="10.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyUtubeModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyUtubeModel.User" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyUtubeModel.Video" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="MyUtubeModel.FK_Channel_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MyUtubeModel.FK_Video_Channel" ManuallyRouted="false" />
+        <AssociationConnector Association="MyUtubeModel.FK_Comment_Comment" ManuallyRouted="false" />
+        <AssociationConnector Association="MyUtubeModel.FK_Comment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MyUtubeModel.FK_Comment_Video" ManuallyRouted="false" />
+        <AssociationConnector Association="MyUtubeModel.FK_Review_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MyUtubeModel.FK_Review_Video" ManuallyRouted="false" />
+        <AssociationConnector Association="MyUtubeModel.FK_Video_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
